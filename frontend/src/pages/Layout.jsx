@@ -65,7 +65,7 @@ const Layout = () => {
           </div>
         </div>
         <div className="w-full flex mt-16">
-          <div className="sidebar w-[360px] p-5 h-[calc(100vh-70px)] fixed">
+          <div className="sidebar w-[300px] p-5 h-[calc(100vh-70px)] fixed">
             <div className="px-2 py-2 flex justify-start gap-5 items-center mb-3">
               <img
                 src="https://images.pexels.com/photos/27514901/pexels-photo-27514901/free-photo-of-woman-in-hat-sitting-with-hand-on-cheek.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
