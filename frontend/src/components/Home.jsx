@@ -1,9 +1,31 @@
 import React, { useState } from 'react'
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const Home = () => {
+  const navigate = useNavigate();
   const [show, setShow] = useState();
+  const [state, setState] = useState({
+    width: 0,
+    height : 0,
+  });
+
+  const inputHandle = (e) => {
+    setState({
+      ...state,
+      [e.target.name] : e.target.value
+    })
+  }
+
+  const create = () =>{
+    navigate("/design/create",{
+      state:{
+        type:"create",
+        width : state.width,
+        height : state.height
+      }
+    })
+  }
 
   const responsive = {
     superLargeDesktop: {
@@ -33,14 +55,14 @@ const Home = () => {
           <div className="grid grid-cols-2 pb-4 gap-3">
             <div className="flex gap-2 justify-center items-center flex-col">
               <label htmlFor="width">width</label>
-              <input type="number" name="width" id="width" className='w-full outline-none px-2 py-[4px] bg-[#1b1a1a] border border-[#404040] rounded-md ' />
+              <input onChange={inputHandle} type="number" name="width" id="width" className='w-full outline-none px-2 py-[4px] bg-[#1b1a1a] border border-[#404040] rounded-md ' />
             </div>
             <div className="flex gap-2 justify-center items-center flex-col">
               <label htmlFor="height">Height</label>
-              <input type="number" name="height" id="height" className='w-full outline-none px-2 py-[4px] bg-[#1b1a1a] border border-[#404040] rounded-md ' />
+              <input onChange={inputHandle} type="number" name="height" id="height" className='w-full outline-none px-2 py-[4px] bg-[#1b1a1a] border border-[#404040] rounded-md ' />
             </div>
           </div>
-          <button className='px-4 py-2 text-[13px] overflow-hidden text-center bg-[#8b3dffad] text-white rounded-[3px] font-medium hover:bg-[#8b3dffd3] w-full'>Create new design</button>
+          <button onClick={create} className='px-4 py-2 text-[13px] overflow-hidden text-center bg-[#8b3dffad] text-white rounded-[3px] font-medium hover:bg-[#8b3dffd3] w-full'>Create new design</button>
         </div>
         <div className="text-3xl pb-10 pt-10 font-semibold text-white">
           What will you design today?
