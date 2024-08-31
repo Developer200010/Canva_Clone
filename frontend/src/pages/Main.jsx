@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
+import TemplateDesign from "../components/Main/TemplateDesign";
 
 const Main = () => {
     const [state, setState] = useState();
@@ -51,7 +52,11 @@ const Main = () => {
                 <div className={`${show.status ? "p-0 -left-[350px]":"px-8 left-[75px] py-5"} bg-[#252627] h-full fixed transition-all duration-500 w-[350px] z-30`}>
                     <div onClick={() => setShow({name:"", status:true})} className="flex absolute justify-center items-center bg-[#252627] w-[20px] -right-2 text-purple-500 top-[40%] cursor-pointer h-[100px] rounded-sm"><i class="fa-regular fa-envelope"></i></div>
                     {
-                        state === "design" && <div className="">design</div>
+                        state === "design" && <div className="">
+                            <div className="grid grid-cols-2 gap-2">
+                                <TemplateDesign/>
+                            </div>
+                        </div>
                     }
                     {
                         state === "shape" && <div className="">shape</div>
