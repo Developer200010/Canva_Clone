@@ -19,7 +19,7 @@ const CreateDesign = () => {
   return (
     <>
     <div className="w-screen h-screen flex justify-center items-center relative">
-      <div className="relative w-auto h-auto overflow-hidden">
+      <div ref={ref} className="relative w-auto h-auto overflow-hidden">
         <CreateComponent info = {obj} current_component = {{}}/>
       </div>
     </div>

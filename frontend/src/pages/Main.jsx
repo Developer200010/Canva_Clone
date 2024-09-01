@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
 import TemplateDesign from "../components/Main/TemplateDesign";
+import MyImages from "../components/Main/Myimages";
+import Project from "../components/Project";
 
 const Main = () => {
     const [state, setState] = useState();
@@ -59,19 +61,29 @@ const Main = () => {
                         </div>
                     }
                     {
-                        state === "shape" && <div className="">shape</div>
+                        state === "shape" && <div className="grid grid-cols-3 gap-2">
+                            <div className="h-[90px] bg-white cursor-pointer"></div>
+                            <div className="h-[90px] bg-white cursor-pointer rounded-full"></div>
+                            <div style={{clipPath:"polygon(50% 0, 100% 100%, 0 100%)"}} className="h-[90px] bg-white cursor-pointer"></div>
+                        </div>
                     }
                     {
-                        state === "upload" && <div className="">upload</div>
+                        state === "upload" && <div className="">
+                            <MyImages/>
+                        </div>
                     }
                     {
-                        state === "text" && <div className="">text</div>
+                        state === "text" && <div className="flex justify-center items-center bg-white p-2 rounded-md">
+                            <div>Add to text</div>
+                        </div>
                     }
                     {
                         state === "image" && <div className="">image</div>
                     }
                     {
-                        state === "project" && <div className="">project</div>
+                        state === "project" && <div className="">
+                            <Project/>
+                        </div>
                     }
                 </div>
             </div>
