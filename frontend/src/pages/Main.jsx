@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { Component, useState } from "react";
 import Header from "../components/Header";
 import TemplateDesign from "../components/Main/TemplateDesign";
 import MyImages from "../components/Main/Myimages";
 import Project from "../components/Project";
 import Image from "../components/Image";
-
+import CreateComponent from "../components/CreateComponent";
 const Main = () => {
   const [state, setState] = useState();
+  const [ currentComponent, setCurrentComponent] = useState('')
   const [show, setShow] = useState({
     status: true,
     name: "",
@@ -19,6 +20,36 @@ const Main = () => {
       name: name,
     });
   };
+
+  const moveElement = () =>{
+      console.log("move")
+  }
+
+  const resizeElement = () =>{
+    console.log("resize")
+  }
+
+  const rotateElement = () =>{
+    console.log("rotate")
+  }
+
+  const removeComponent = () =>{
+    console.log("remove")
+  }
+  const [component,setComponent] = useState([
+    {
+      name : "main_frame",
+      type : "react",
+      id : Math.floor(Math.random() * 100 + 10),
+      height : 450,
+      width: 650,
+      z_index : 1,
+      image : '',
+      color:"#fff",
+      setCurrentComponent : (a) => setCurrentComponent(a )
+    }
+  ]);
+  console.log(currentComponent)
 
   return (
     <>
@@ -178,6 +209,22 @@ const Main = () => {
               )}
             </div>
           </div>
+          <div className="w-full h-full flex">
+            <div className={`flex justify-center relative items-center h-full ${!currentComponent ? "w-full" : "w-[calc(100%-250px)] overflow-hidden bg-slate-500"}`}>
+              <div className="m-w-[650px] m-h-[480px] flex justify-center items-center overflow-hidden">
+                <div className="w-auto relative h-auto overflow-hidden" id="main_design">
+                  {
+                    component.map((c,i)=>(
+                      <CreateComponent key={i} info={c} current_component={currentComponent} removeComponent = {removeComponent}/>
+                    ))
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+          {
+            currentComponent && <div className="text-white h-full w-[250px] bg-[#252627] px-3 py-2">something</div>
+          }
         </div>
       </div>
     </>
